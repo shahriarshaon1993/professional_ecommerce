@@ -159,6 +159,7 @@ Route::get('/blog/single/{id}', [BlogController::class, 'BlogSingle']);
 // All Payment Step
 Route::get('/payment/page/', [CartController::class, 'PaymentStep'])->name('payment.step');
 Route::post('/user/payment/process/', [PaymentController::class, 'Payment'])->name('payment.process');
+Route::post('/user/stripe/charge/', [PaymentController::class, 'StripeCharge'])->name('stripe.charge');
 
 // All Products Details
 Route::get('/products/{id}', [FrontProductController::class, 'SubCategoryView']);

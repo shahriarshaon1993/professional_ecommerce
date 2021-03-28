@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\Product\ProductController;
+use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
@@ -177,3 +178,8 @@ Route::get('/admin/success/payment', [OrderController::class, 'SuccessPayment'])
 Route::get('/admin/cancel/order', [OrderController::class, 'CancelOrder'])->name('admin.cancel.order');
 Route::get('/admin/delevery/process/{id}', [OrderController::class, 'DeleveryProcess']);
 Route::get('/admin/delevery/done/{id}', [OrderController::class, 'DeleveryDone']);
+
+
+// SEO Setting
+Route::get('/admin/seo/', [SeoController::class, 'Seo'])->name('admin.seo');
+Route::post('/admin/update/seo/', [SeoController::class, 'UpdateSeo'])->name('update.seo');

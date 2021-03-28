@@ -162,6 +162,21 @@
         });
     </script>
 
+    <script>
+        $(function () {
+            'use strict';
+
+            // Inline editor
+            var editor = new MediumEditor('.editable');
+
+            // Summernote editor
+            $('#summernote2').summernote({
+                height: 150,
+                tooltip: false
+            })
+        });
+    </script>
+
     <script src="{{ asset('public/backend/js/starlight.js') }}"></script>
     <script src="{{ asset('public/backend/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('public/backend/js/dashboard.js') }}"></script>

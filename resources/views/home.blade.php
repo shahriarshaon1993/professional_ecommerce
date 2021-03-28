@@ -2,6 +2,10 @@
 
 @section('content')
 
+    @php
+        $order = DB::table('orders')->where('user_id', Auth::id())->orderBy('id', 'DESC')->limit(10)->get();
+    @endphp
+
     <div class="contact_form">
         <div class="container">
             <div class="row">
@@ -9,37 +13,27 @@
                     <table class="table table-response">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Body</th>
+                                <th scope="col">Payment Type</th>
+                                <th scope="col">Payment Id</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status Code</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td scope="col">1</td>
-                                <td scope="col">Mark 1</td>
-                                <td scope="col">Mark 2</td>
-                                <td scope="col">Mark 3</td>
-                            </tr>
-                            <tr>
-                                <td scope="col">1</td>
-                                <td scope="col">Mark 1</td>
-                                <td scope="col">Mark 2</td>
-                                <td scope="col">Mark 3</td>
-                            </tr>
-                            <tr>
-                                <td scope="col">1</td>
-                                <td scope="col">Mark 1</td>
-                                <td scope="col">Mark 2</td>
-                                <td scope="col">Mark 3</td>
-                            </tr>
-                            <tr>
-                                <td scope="col">1</td>
-                                <td scope="col">Mark 1</td>
-                                <td scope="col">Mark 2</td>
-                                <td scope="col">Mark 3</td>
-                            </tr>
+                            @foreach ($order as $item)
+                                <tr>
+                                    <td scope="col">{{ $item->payment_type }}</td>
+                                    <td scope="col">{{ $item->payment_id }}</td>
+                                    <td scope="col">{{ $item->total }}</td>
+                                    <td scope="col">{{ $item->date }}</td>
+                                    <td scope="col">{{ $item->status_code }}</td>
+                                    <td scope="col">
+                                        <a href="" class="btn btn-sm btn-info">View</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -48,6 +48,17 @@
                                     href="mailto:fastsales@gmail.com">fastsales@gmail.com</a>
                             </div>
                             <div class="top_bar_content ml-auto">
+
+                                @guest
+
+                                @else
+                                    <div class="top_bar_menu">
+                                        <ul class="standard_dropdown top_bar_dropdown">
+                                            <li><a href="" data-toggle="modal" data-target="#exampleModal">My Order Tracking</a></li>
+                                        </ul>
+                                    </div>
+                                @endguest
+
                                 <div class="top_bar_menu">
 
                                     @php
@@ -291,6 +302,33 @@
 
         <!--End Copyright -->
     </div>
+
+<!--Order tracking Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Your Status Code</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('order.tracking') }}" method="POST">
+                    @csrf
+                    <label for="code">Status Code</label>
+                    <input type="text" name="code" id="code" class="form-control" placeholder="Enter Order Status Code">
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Track Now</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
     <script src="{{ asset('public/frontend/js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{ asset('public/frontend/styles/bootstrap4/popper.js')}}"></script>

@@ -183,3 +183,6 @@ Route::get('/admin/delevery/done/{id}', [OrderController::class, 'DeleveryDone']
 // SEO Setting
 Route::get('/admin/seo/', [SeoController::class, 'Seo'])->name('admin.seo');
 Route::post('/admin/update/seo/', [SeoController::class, 'UpdateSeo'])->name('update.seo');
+
+//Order Tracking Route
+Route::post('/order/tracking/', [FrontController::class, 'OrderTracking'])->name('order.tracking');

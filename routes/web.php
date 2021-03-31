@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SeoController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\BlogController;
@@ -207,3 +208,7 @@ Route::post('/admin/create/user', [UserRoleController::class, 'UserStore'])->nam
 Route::get('delete/admin/{id}', [UserRoleController::class, 'UserDelete']);
 Route::get('edit/admin/{id}', [UserRoleController::class, 'UserEdit']);
 Route::post('admin/update/admin', [UserRoleController::class, 'UserUpdate'])->name('update.admin');
+
+// Admin Site Setting
+Route::get('/admin/site/setting', [SettingController::class, 'SiteSetting'])->name('admin.site.setting');
+Route::post('admin/sitesetting', [SettingController::class, 'UpdateSiteSetting'])->name('update.sitesetting');

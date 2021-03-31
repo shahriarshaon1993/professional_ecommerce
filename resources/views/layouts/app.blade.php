@@ -1,3 +1,7 @@
+@php
+    $setting = DB::table('sitesetting')->first()
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,11 +45,11 @@
                     <div class="row">
                         <div class="col d-flex flex-row">
                             <div class="top_bar_contact_item">
-                                <div class="top_bar_icon"><img src="{{ asset('public/frontend/images/phone.png')}}" alt=""></div>+38 068 005 3570
+                                <div class="top_bar_icon"><img src="{{ asset('public/frontend/images/phone.png')}}" alt=""></div>+88{{ $setting->phone_one }}
                             </div>
                             <div class="top_bar_contact_item">
                                 <div class="top_bar_icon"><img src="{{ asset('public/frontend/images/mail.png')}}" alt=""></div><a
-                                    href="mailto:fastsales@gmail.com">fastsales@gmail.com</a>
+                                    href="mailto:{{$setting->email}}">{{ $setting->email }}</a>
                             </div>
                             <div class="top_bar_content ml-auto">
 
@@ -199,21 +203,19 @@
                     <div class="col-lg-3 footer_col">
                         <div class="footer_column footer_contact">
                             <div class="logo_container">
-                                <div class="logo"><a href="#">OneTech</a></div>
+                                <div class="logo"><a href="#">{{ $setting->company_name }}</a></div>
                             </div>
                             <div class="footer_title">Got Question? Call Us 24/7</div>
-                            <div class="footer_phone">+38 068 005 3570</div>
+                            <div class="footer_phone">+88{{ $setting->phone_two }}</div>
                             <div class="footer_contact_text">
-                                <p>17 Princess Road, London</p>
-                                <p>Grester London NW18JR, UK</p>
+                                <p>{{ $setting->company_address }}</p>
                             </div>
                             <div class="footer_social">
                                 <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                                    <li><a target="_blank" href="{{ $setting->facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a target="_blank" href="{{ $setting->twitter }}"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a target="_blank" href="{{ $setting->instagram }}"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a target="_blank" href="{{ $setting->youtube }}"><i class="fab fa-youtube"></i></a></li>
                                 </ul>
                             </div>
                         </div>

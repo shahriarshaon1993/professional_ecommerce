@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\Product\ProductController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\BlogController;
@@ -186,3 +187,13 @@ Route::post('/admin/update/seo/', [SeoController::class, 'UpdateSeo'])->name('up
 
 //Order Tracking Route
 Route::post('/order/tracking/', [FrontController::class, 'OrderTracking'])->name('order.tracking');
+
+// Reports All Route
+Route::get('/admin/today/order', [ReportController::class, 'TodayOrder'])->name('today.order');
+Route::get('/admin/today/delivery', [ReportController::class, 'TodayDelivery'])->name('today.delivery');
+Route::get('/admin/this/month', [ReportController::class, 'ThisMonth'])->name('this.month');
+Route::get('/admin/search/report', [ReportController::class, 'Search'])->name('search.report');
+
+Route::post('/admin/search/by/year', [ReportController::class, 'SearchByYear'])->name('search.by.year');
+Route::post('/admin/search/by/month', [ReportController::class, 'SearchByMonth'])->name('search.by.month');
+Route::post('/admin/search/by/date', [ReportController::class, 'SearchByDate'])->name('search.by.date');

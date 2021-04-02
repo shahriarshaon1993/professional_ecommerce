@@ -44,6 +44,7 @@ class UserRoleController extends Controller
         $data['contact'] = $request->contact;
         $data['comment'] = $request->comment;
         $data['settings'] = $request->settings;
+        $data['stock'] = $request->stock;
         $data['type'] = 2;
 
         DB::table('admins')->insert($data);
@@ -92,6 +93,7 @@ class UserRoleController extends Controller
         $data['contact'] = $request->contact;
         $data['comment'] = $request->comment;
         $data['settings'] = $request->settings;
+        $data['stock'] = $request->stock;
 
         DB::table('admins')->where('id', $id)->update($data);
         $notification = array(

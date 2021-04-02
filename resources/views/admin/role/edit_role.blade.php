@@ -131,6 +131,13 @@
                                 </label>
                             </div>
 
+                            <div class="col-lg-4">
+                                <label class="ckbox">
+                                    <input type="checkbox" name="stock" value="1" @if ($user->stock == 1) {{ "checked" }} @endif>
+                                    <span>Stock</span>
+                                </label>
+                            </div>
+
                         </div><!-- row -->
                         <br><br>
 

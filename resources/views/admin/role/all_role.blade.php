@@ -104,6 +104,10 @@
                                             <span class="badge btn-info">setting </span>
                                         @endif
 
+                                        @if($item->stock == 1)
+                                            <span class="badge btn-warning">Stock </span>
+                                        @endif
+
                                     </td>
                                     <td>
                                         <a href="{{ URL::to('edit/admin/'.$item->id) }}" class="btn btn-sm btn-info">Edit</a>

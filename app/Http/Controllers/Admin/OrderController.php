@@ -100,6 +100,14 @@ class OrderController extends Controller
 
     public function DeleveryDone($id)
     {
+        $product = DB::table('orders_details')->where('order_id', $id)->get();
+
+        foreach ($product as $item) {
+            DB::table('products')
+                ->where('id', $item->product_id)
+                ->update(['product_quantity' => DB::raw('product_quantity-' . $item->quantity)]);
+        }
+
         DB::table('orders')->where('id', $id)->update(['status' => 3]);
 
         $notification = array(

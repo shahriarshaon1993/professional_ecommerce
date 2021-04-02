@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Category\SubCategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\OrderStockController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ReturnRequest;
@@ -222,3 +223,7 @@ Route::get('/request/return/{id}', [PaymentController::class, 'RequestReturn']);
 Route::get('admin/return/request', [ReturnRequest::class, 'ReturnRequest'])->name('admin.return.request');
 Route::get('admin/approve/return/{id}', [ReturnRequest::class, 'ApproveReturn']);
 Route::get('admin/all/return', [ReturnRequest::class, 'AllReturn'])->name('admin.return.all');
+
+
+// Admin Product Stock Route
+Route::get('/admin/product/stock', [OrderStockController::class, 'ProductStock'])->name('admin.product.stock');

@@ -136,6 +136,13 @@
                                 </label>
                             </div>
 
+                            <div class="col-lg-4">
+                                <label class="ckbox">
+                                    <input type="checkbox" name="stock" value="1">
+                                    <span>Stock</span>
+                                </label>
+                            </div>
+
                         </div><!-- row -->
                         <br><br>
 

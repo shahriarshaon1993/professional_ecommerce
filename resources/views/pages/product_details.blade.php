@@ -86,6 +86,11 @@
                                     <div class="product_fav"><i class="fas fa-heart"></i></div>
                                 </div>
 
+
+                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                <div class="addthis_inline_share_toolbox mt-4"></div>
+
+
                             </form>
 
                         </div>
@@ -134,7 +139,9 @@
                                 <a target="_blank" href="{{ $product->video_link }}">{{ $product->video_link }}</a>
                             </div>
                             <div class="tab-pane fade p-4" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi repellendus, incidunt laborum quas blanditiis magnam accusamus laudantium perferendis illum obcaecati.
+
+                                <div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="5"></div>
+
                             </div>
                         </div>
 
@@ -144,6 +151,11 @@
         </div>
 
         <!--End Recently Viewed -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="ryZK7csi"></script>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-606749e342fd928c"></script>
 
 
 @endsection

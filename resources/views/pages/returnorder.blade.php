@@ -15,11 +15,10 @@
                         <thead>
                             <tr>
                                 <th scope="col">Payment Type</th>
-                                <th scope="col">Payment Id</th>
+                                <th scope="col">Return</th>
                                 <th scope="col">Amount</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Status Code</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -27,7 +26,18 @@
                             @foreach ($order as $item)
                                 <tr>
                                     <td scope="col">{{ $item->payment_type }}</td>
-                                    <td scope="col">{{ $item->payment_id }}</td>
+                                    <td scope="col">
+                                        @if ($item->return_order == 0)
+                                            <span class="badge badge-warning">No Request</span>
+
+                                        @elseif($item->return_order == 1)
+                                            <span class="badge badge-info">Panding</span>
+
+                                        @elseif($item->return_order == 2)
+                                            <span class="badge badge-warning">Success</span>
+
+                                        @endif
+                                    </td>
                                     <td scope="col">{{ $item->total }}</td>
                                     <td scope="col">{{ $item->date }}</td>
                                     <td scope="col">
@@ -48,9 +58,17 @@
 
                                         @endif
                                     </td>
-                                    <td scope="col">{{ $item->status_code }}</td>
                                     <td scope="col">
-                                        <a href="" class="btn btn-sm btn-info">View</a>
+                                        @if ($item->return_order == 0)
+                                            <a href="{{ url('request/return/'.$item->id) }}" class="btn btn-sm btn-danger" id="return">Return</a>
+
+                                        @elseif($item->return_order == 1)
+                                            <span class="badge badge-info">Panding</span>
+
+                                        @elseif($item->return_order == 2)
+                                            <span class="badge badge-warning">Success</span>
+
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

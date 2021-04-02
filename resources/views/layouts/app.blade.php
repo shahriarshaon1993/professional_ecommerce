@@ -377,6 +377,27 @@
 
 
     </script>
+
+    <script>
+         $(document).on("click", "#return", function(e){
+             e.preventDefault();
+             var link = $(this).attr("href");
+                swal({
+                  title: "Are you Want to return?",
+                  text: "Once Return, This will return your money!",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                })
+                .then((willDelete) => {
+                  if (willDelete) {
+                       window.location.href = link;
+                  } else {
+                    swal("Safe Data!");
+                  }
+                });
+            });
+    </script>
 </body>
 
 </html>

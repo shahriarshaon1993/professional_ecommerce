@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\ReturnRequest;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserRoleController;
@@ -212,3 +213,12 @@ Route::post('admin/update/admin', [UserRoleController::class, 'UserUpdate'])->na
 // Admin Site Setting
 Route::get('/admin/site/setting', [SettingController::class, 'SiteSetting'])->name('admin.site.setting');
 Route::post('admin/sitesetting', [SettingController::class, 'UpdateSiteSetting'])->name('update.sitesetting');
+
+// Return Order Route
+Route::get('/success/list', [PaymentController::class, 'SuccessList'])->name('success.orderlist');
+Route::get('/request/return/{id}', [PaymentController::class, 'RequestReturn']);
+
+// Admin Return Request
+Route::get('admin/return/request', [ReturnRequest::class, 'ReturnRequest'])->name('admin.return.request');
+Route::get('admin/approve/return/{id}', [ReturnRequest::class, 'ApproveReturn']);
+Route::get('admin/all/return', [ReturnRequest::class, 'AllReturn'])->name('admin.return.all');

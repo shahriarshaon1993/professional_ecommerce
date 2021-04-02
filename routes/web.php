@@ -19,10 +19,12 @@ use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\FrontProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -227,3 +229,11 @@ Route::get('admin/all/return', [ReturnRequest::class, 'AllReturn'])->name('admin
 
 // Admin Product Stock Route
 Route::get('/admin/product/stock', [OrderStockController::class, 'ProductStock'])->name('admin.product.stock');
+
+// All Contact Route
+Route::get('/contact/page', [ContactController::class, 'contact'])->name('contact.page');
+Route::post('contact/form', [ContactController::class, 'ContactForm'])->name('contact.form');
+Route::get('admin/all/message', [ContactController::class, 'AllMessage'])->name('all.message');
+
+// Search Route
+Route::post('product/search', [SearchController::class, 'Search'])->name('product.search');

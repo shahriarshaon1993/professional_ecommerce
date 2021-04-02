@@ -175,8 +175,7 @@
                     </a><!-- sl-menu-link -->
 
                     <ul class="sl-menu-sub nav flex-column">
-                        <li class="nav-item"><a href="" class="nav-link">New Message</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">All Message</a></li>
+                        <li class="nav-item"><a href="{{ route('all.message') }}" class="nav-link">All Message</a></li>
                     </ul>
                 @endif
 

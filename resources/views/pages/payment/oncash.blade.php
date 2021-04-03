@@ -6,6 +6,7 @@
     $setting = DB::table('settings')->first();
     $charge = $setting->shipping_charge;
     $vat = $setting->vat;
+    $cart = Cart::content();
 @endphp
 
     <!-- Contact Form -->
@@ -95,57 +96,38 @@
 
                     <div class="col-md-5 p-4">
                         <div class="contact_form_container">
-                            <div class="contact_form_title text-center">Sign Up</div>
+                            <div class="contact_form_title text-center">
+                                <h3>Submit Card</h3>
+                            </div>
 
-                            <form action="{{ route('payment.process') }}" method="post">
+                            <form action="{{ route('oncash.charge') }}" method="post">
                                 @csrf
-                                <div class="form-group icon_parent">
-                                    <label for="name">Name</label>
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Your full name">
+                                <div class="form-row my-4">
+                                    <label for="card-element">
+                                        Cash On Delivery
+                                    </label>
+                                    <div id="card-element">
+                                        <!-- A Stripe Element will be inserted here. -->
+                                    </div>
+
+                                    <!-- Used to display form errors. -->
+                                    <div id="card-errors" role="alert"></div>
                                 </div>
 
-                                <div class="form-group icon_parent">
-                                    <label for="phone">Phone</label>
-                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="name" autofocus placeholder="Your phone">
-                                </div>
+                                <input type="hidden" name="shipping" value="{{ $charge }} ">
+                                <input type="hidden" name="vat" value="{{ $vat }} ">
+                                <input type="hidden" name="total" value="{{ Cart::Subtotal() + $charge + $vat }}">
 
-                                <div class="form-group icon_parent">
-                                    <label for="email">E-mail</label>
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Your E-mail">
-                                </div>
+                                <input type="hidden" name="ship_name" value="{{ $data['name'] }} ">
+                                <input type="hidden" name="ship_phone" value="{{ $data['phone'] }} ">
+                                <input type="hidden" name="ship_email" value="{{ $data['email'] }} ">
+                                <input type="hidden" name="ship_address" value="{{ $data['address'] }} ">
+                                <input type="hidden" name="ship_city" value="{{ $data['city'] }} ">
+                                <input type="hidden" name="payment_type" value="{{ $data['payment'] }} ">
 
-                                <div class="form-group icon_parent">
-                                    <label for="address">Address</label>
-                                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus placeholder="Your address">
-                                </div>
-
-                                <div class="form-group icon_parent">
-                                    <label for="city">City</label>
-                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus placeholder="Your city">
-                                </div>
-
-                                <h3 class="contact_form_title text-center">Payment By</h3>
-
-                                <div class="form-group">
-                                    <ul class="logos_list">
-                                        <li>
-                                            <input type="radio" name="payment" value="stripe"><img src="{{ asset('public/frontend/images/mastercard.png') }}" style="width: 100px; height: 60px;" alt="">
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="payment" value="paypal"><img src="{{ asset('public/frontend/images/paypal.png') }}" style="width: 100px; height: 60px;" alt="">
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="payment" value="oncash">Cash On
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="form-group text-right">
-                                    <button type="submit" class="btn btn-info">Pay Now</button>
-                                </div>
-
+                                <button class="btn btn-info">Pay Now</button>
                             </form>
-]
+
                         </div>
                     </div>
                 </div>

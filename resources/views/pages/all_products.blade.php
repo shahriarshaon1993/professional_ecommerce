@@ -12,7 +12,9 @@
                 data-image-src="{{ asset('public/frontend/images/shop_background.jpg') }}"></div>
             <div class="home_overlay"></div>
             <div class="home_content d-flex flex-column align-items-center justify-content-center">
-                <h2 class="home_title">Smartphones & Tablets</h2>
+                @foreach ($subcatname as $item)
+                    <h2 class="home_title">{{ $item->subcategory_name }}</h2>
+                @endforeach
             </div>
         </div>
 

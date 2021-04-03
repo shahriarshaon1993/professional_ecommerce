@@ -14,7 +14,11 @@
                 data-image-src="{{ asset('public/frontend/images/shop_background.jpg') }}"></div>
             <div class="home_overlay"></div>
             <div class="home_content d-flex flex-column align-items-center justify-content-center">
-                <h2 class="home_title">Category Product</h2>
+
+                @foreach ($catname as $item)
+                    <h2 class="home_title">{{ $item->category_name }}</h2>
+                @endforeach
+
             </div>
         </div>
 

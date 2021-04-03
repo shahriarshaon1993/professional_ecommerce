@@ -68,21 +68,25 @@ class FrontProductController extends Controller
 
     public function SubCategoryView($id)
     {
+        $subcatname = DB::table('subcategories')->where('id', $id)->get();
+
         $products = DB::table('products')->where('subcategory_id', $id)->paginate(10);
         $categories = DB::table('categories')->get();
 
         $brands = DB::table('products')->where('subcategory_id', $id)
             ->select('brand_id')->groupBy('brand_id')->get();
 
-        return view('pages.all_products', compact('products', 'categories', 'brands'));
+        return view('pages.all_products', compact('products', 'categories', 'brands', 'subcatname'));
     }
 
     public function CategoryView($id)
     {
+        $catname = DB::table('categories')->where('id', $id)->get();
+
         $products = DB::table('products')->where('category_id', $id)->paginate(10);
         $categories = DB::table('categories')->get();
         $brands = DB::table('brands')->get();
 
-        return view('pages.all_categories', compact('products', 'categories', 'brands'));
+        return view('pages.all_categories', compact('products', 'categories', 'brands', 'catname'));
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Coupon;
 use App\Models\Admin\Newslater;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class CouponController extends Controller
@@ -93,6 +94,19 @@ class CouponController extends Controller
 
         $notification = array(
             'message' => 'Delete Successfully',
+            'alert-type' => 'success',
+        );
+
+        return Redirect()->back()->with($notification);
+    }
+
+    public function DeleteAll(Request $request)
+    {
+        $ids = $request->get('ids');
+        $dbs = DB::delete('delete from newslaters where id in (' . implode(",", $ids) . ')');
+
+        $notification = array(
+            'message' => 'Delete Your Selected Data',
             'alert-type' => 'success',
         );
 

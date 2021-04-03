@@ -99,6 +99,7 @@ Route::post('/update/coupon/{id}', [CouponController::class, 'UpdateCoupon']);
 Route::get('/admin/newslater', [CouponController::class, 'Newalater'])->name('admin.newslater');
 Route::post('/store/newslater', [FrontController::class, 'StoreNewslater'])->name('store.newslater');
 Route::get('/delete/sub/{id}', [CouponController::class, 'DeleteNewsleter']);
+Route::delete('/deleteall', [CouponController::class, 'DeleteAll'])->name('deleteall');
 
 // Show SubCategory when Category Selected
 Route::get('/get/subcategory/{category_id}', [ProductController::class, 'GetSubCat']);

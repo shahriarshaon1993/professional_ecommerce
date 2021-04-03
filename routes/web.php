@@ -22,9 +22,11 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\FrontProductController;
+use App\Http\Controllers\GoogleSocialiteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -237,3 +239,7 @@ Route::get('admin/all/message', [ContactController::class, 'AllMessage'])->name(
 
 // Search Route
 Route::post('product/search', [SearchController::class, 'Search'])->name('product.search');
+
+// Socialite Route
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
+Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);

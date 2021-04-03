@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+        'client_id' => '289640905631-aqgqj8e71bg1fges0lf2u8pskr0etsmj.apps.googleusercontent.com',
+        'client_secret' => 'dulfBDcsr8qxwCTKQ8tr6XH2',
+        'redirect' => 'http://localhost/learn_laravel_8/professional_ecommerce/callback/google',
+    ],
+
 ];

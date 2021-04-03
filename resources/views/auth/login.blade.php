@@ -43,7 +43,7 @@
 
                             <button type="submit" class="btn btn-primary btn-block"><i class="fab fa-facebook-square"></i> Login With Facebook</button>
 
-                            <button type="submit" class="btn btn-danger btn-block"><i class="fab fa-google"></i> Login With Google</button>
+                            <a href="{{ url('auth/google') }}" type="submit" class="btn btn-danger btn-block"><i class="fab fa-google"></i> Login With Google</a>
 
                         </div>
                     </div>
